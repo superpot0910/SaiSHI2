@@ -1,0 +1,428 @@
+/* 全局重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Microsoft Yahei", sans-serif;
+    color: #222;
+    line-height: 1.6;
+    background: #f5f7fa;
+    overflow-x: hidden;
+}
+
+/* 全局模糊背景 */
+.bg-blur-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('cover.jpg') center/cover no-repeat;
+    filter: blur(20px) brightness(0.7);
+    z-index: -1;
+}
+
+/* 进度条 */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: #ff6b35;
+    width: 0%;
+    z-index: 10000;
+    transition: width 0.1s linear;
+}
+
+/* 回到顶部 */
+.back-top-btn {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    text-align: center;
+    line-height: 45px;
+    cursor: pointer;
+    z-index: 999;
+    font-size: 20px;
+}
+.back-top-btn:hover {
+    background: #ff6b35;
+}
+
+/* 封面页 */
+.cover-page {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.cover-wrapper {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    cursor: pointer;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.cover-img {
+    width: 100%;
+    display: block;
+    transition: transform 0.5s;
+}
+.cover-wrapper:hover .cover-img {
+    transform: scale(1.03);
+}
+.cover-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: #fff;
+}
+.cover-text h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+.click-hint {
+    font-size: 16px;
+    opacity: 0.9;
+}
+.scroll-arrow {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 24px;
+    animation: bounce 2s infinite;
+}
+@keyframes bounce {
+    0%,100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(10px); }
+}
+.cover-fade-out {
+    opacity: 0;
+    transition: opacity 0.6s;
+}
+
+/* 主页面 */
+.main-page {
+    display: none;
+    padding: 60px 0;
+}
+.main-fade-in {
+    animation: fadeIn 0.6s ease;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.main-heading {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* 筛选按钮 */
+.filter-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+.filter-btn {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+.filter-btn.active,
+.filter-btn:hover {
+    background: #ff6b35;
+    color: #fff;
+}
+
+/* 赛事卡片 */
+.race-card {
+    background: #fff;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+.active-reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+.race-header {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+}
+.race-title-box h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #222;
+}
+.tag-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.tag {
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: #fff;
+}
+.half-tag { background: #3498db; }
+.full-tag { background: #e74c3c; }
+.sparta-tag { background: #9b59b6; }
+.trail-tag { background: #27ae60; }
+.vertical-tag { background: #f39c12; }
+.honor-tag { background: #1abc9c; }
+.date-tag { background: #666; }
+.num-tag { background: #555; }
+.time-tag { background: #333; }
+.pb-tag { background: #ff6b35; }
+.rank-tag { background: #8e44ad; }
+.champion-tag { background: #d4af37; }
+.rescue-tag { background: #c0392b; }
+.core-tag { background: #2c3e50; }
+.cert-tag { background: #16a085; }
+
+.expand-icon {
+    font-size: 24px;
+    color: #999;
+    user-select: none;
+    font-weight: bold;
+    transition: transform 0.3s;
+}
+
+/* 赛事内容（展开收起核心样式） */
+.race-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    padding: 0 24px;
+}
+.race-content.open {
+    max-height: 2000px;
+    padding: 20px 24px;
+}
+
+/* 轮播核心样式（统一图片比例版） */
+.photo-swiper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+.swiper-wrapper {
+    display: flex;
+    transition: transform 0.4s ease;
+}
+.swiper-slide {
+    flex-shrink: 0;
+    width: 100%;
+    position: relative;
+    /* 强制统一图片显示比例，16/9 = 宽:高 = 16:9 */
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #f0f0f0; /* 图片加载前的占位底色 */
+}
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    /* 核心：图片等比缩放填满容器，超出部分自动裁剪，不变形 */
+    object-fit: cover;
+    /* 裁剪时以图片中心为基准，保证主体在画面中 */
+    object-position: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.swiper-slide img:hover {
+    transform: scale(1.03);
+}
+.slide-desc {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 12px 16px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    color: #fff;
+    font-size: 14px;
+    margin: 0;
+    z-index: 2;
+}
+
+/* 轮播左右箭头 */
+.swiper-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.3s;
+    z-index: 10;
+}
+.swiper-nav:hover {
+    background: rgba(0,0,0,0.8);
+}
+.swiper-nav.prev {
+    left: 12px;
+}
+.swiper-nav.next {
+    right: 12px;
+}
+
+/* 赛事总结 */
+.race-summary {
+    padding: 12px 16px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    color: #555;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* 返回封面按钮 */
+.back-cover-btn {
+    display: block;
+    margin: 40px auto 0;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 25px;
+    background: #ff6b35;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.back-cover-btn:hover {
+    background: #e55a2b;
+}
+
+/* 图片全屏预览弹窗 */
+.preview-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.9);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+.preview-modal #previewImg {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+}
+.close-preview {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 48px;
+    cursor: pointer;
+    user-select: none;
+    line-height: 1;
+}
+.close-preview:hover {
+    color: #ccc;
+}
+
+/* 响应式适配 */
+@media (max-width: 768px) {
+    .cover-text h1 {
+        font-size: 24px;
+    }
+    .main-heading {
+        font-size: 24px;
+    }
+    .race-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .expand-icon {
+        align-self: flex-end;
+    }
+    .swiper-nav {
+        width: 32px;
+        height: 32px;
+        font-size: 18px;
+    }
+}
+/* 分页控件样式 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 30px;
+}
+.page-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+.page-btn.active,
+.page-btn:hover:not(:disabled) {
+    background: #ff6b35;
+    color: #fff;
+}
+.page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
